@@ -24,15 +24,15 @@ public class RomanNumber {
         int [] numbers = {100, 90, 50, 40, 10, 9, 5, 4, 1};
         String [] letters = {"C", "CX", "L", "XL", "X", "IX", "V", "IV", "I"};
 
-        String roman = "";
+        String romanNumber = "";
 
         for (int i = 0; i < numbers.length; i++) {
             while (number + 1 > numbers[i]){
-                roman += letters[i];
+                romanNumber += letters[i];
                 number -= numbers[i];
             }
         }
 
-        return roman;
+        return romanNumber;
     }
 }
