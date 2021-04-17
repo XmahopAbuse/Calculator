@@ -24,7 +24,8 @@ public class Program {
 
         String[] userInputArray = userInput.split(" ");
 
-        if (userInputArray.length < 3){
+        if (userInputArray.length < 3)
+        {
             System.out.println("Invalid input string");
         }
 
@@ -59,7 +60,5 @@ public class Program {
                 System.out.println("Invalid operation symbol");
             }
         }
-
-
     }
 }
