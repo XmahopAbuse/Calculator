@@ -1,8 +1,11 @@
+import Calculator.Calculator;
 import Validator.Validator;
 import Validator.ArabicNumberValidator;
 import Validator.RomanNumberValidator;
 import Validator.OperationValidator;
-import Calculator.Calculator;
+import Calculator.Calculate;
+
+import java.util.Scanner;
 
 
 public class Program {
@@ -13,13 +16,13 @@ public class Program {
         Validator romanNumberValidator = new RomanNumberValidator();
         Validator operationValidator = new OperationValidator();
 
-        Operations operations = new Operations();
+        Calculate calculate = new Calculate();
 
-        String testData = "V + I";
+        Scanner input = new Scanner(System.in);
 
-        InputStringParser stringParser = new InputStringParser(testData);
-        String [] userInputArray = stringParser.convertStringToArray();
+        String userInput = input.nextLine();
 
+        String[] userInputArray = userInput.split(" ");
 
         if (userInputArray.length < 3){
             System.out.println("Invalid input string");
@@ -35,12 +38,15 @@ public class Program {
             {
                 if (arabicNumberValidator.validate(firstLetter) && arabicNumberValidator.validate(secondLetter))
                 {
-                    System.out.println("Arabic letters");
+//                    System.out.println("Arabic letters");
+                    int result = calculate.doCalculate(operationLetter, Integer.parseInt(firstLetter), Integer.parseInt(secondLetter));
+                    System.out.println(result);
                 }
                 else if (romanNumberValidator.validate(firstLetter) && romanNumberValidator.validate(secondLetter))
                 {
-                    System.out.println("Roman letters");
-                    System.out.println(operations.Sum(RomanNumber.valueOf(firstLetter).toNumber(), RomanNumber.valueOf(secondLetter).toNumber()));
+//                    System.out.println("Roman letters");
+                    int result = calculate.doCalculate(operationLetter, RomanNumber.RomanToArabic(firstLetter), RomanNumber.RomanToArabic(secondLetter));
+                    System.out.println(RomanNumber.ArabicToRoman(result));
                 }
                 else
                 {
